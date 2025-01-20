@@ -38,7 +38,7 @@ class ChessVisionScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/chess_icon.png', // Coloque a imagem desejada no caminho especificado.
+              'lib/telas/icones/Cavalo.png',
               height: 40,
             ),
             const SizedBox(width: 8),
