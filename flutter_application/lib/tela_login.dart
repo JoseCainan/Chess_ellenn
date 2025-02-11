@@ -127,7 +127,9 @@ class _TelaLoginState extends State<TelaLogin> {
             ),
             const SizedBox(height: 20),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // Implementar a navegação para a tela de cadastro
+              },
               child: const Text(
                 'Sign up',
                 style: TextStyle(
