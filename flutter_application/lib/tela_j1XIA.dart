@@ -1,22 +1,7 @@
 import 'package:flutter/material.dart';
+import 'tela_inicial.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ChessGameScreen(),
-    );
-  }
-}
-
-class ChessGameScreen extends StatelessWidget {
+class TelaJ1XIA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +11,12 @@ class ChessGameScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => TelaInicial()),
+            );
+          },
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +50,7 @@ class ChessGameScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     const Text(
-                      'Ellen (AI)',
+                      'Ellen (IA)',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -110,7 +100,7 @@ class ChessGameScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     const Text(
-                      'Player 1',
+                      'Jogador',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,

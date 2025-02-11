@@ -1,28 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'tela_inicial.dart';
 
-void main() {
-  runApp(const ChessVisionApp());
-}
-
-class ChessVisionApp extends StatelessWidget {
-  const ChessVisionApp({super.key});
+class TelaLogin extends StatefulWidget {
+  const TelaLogin({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ChessVisionLogin(),
-    );
-  }
+  _TelaLoginState createState() => _TelaLoginState();
 }
 
-class ChessVisionLogin extends StatelessWidget {
-  const ChessVisionLogin({super.key});
+class _TelaLoginState extends State<TelaLogin> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _login() async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => TelaInicial()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao fazer login: $e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
@@ -33,7 +55,7 @@ class ChessVisionLogin extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'lib/telas/icones/Cavalo.png',
+                  'assets/telas/icones/Cavalo.png',
                   height: 50,
                   width: 50,
                 ),
@@ -50,13 +72,14 @@ class ChessVisionLogin extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             TextField(
+              controller: _emailController,
               style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.grey[800],
-                hintText: 'Username',
+                hintText: 'Email',
                 hintStyle: const TextStyle(color: Colors.grey),
-                prefixIcon: const Icon(Icons.person, color: Colors.grey),
+                prefixIcon: const Icon(Icons.email, color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide.none,
@@ -65,6 +88,7 @@ class ChessVisionLogin extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             TextField(
+              controller: _passwordController,
               style: const TextStyle(color: Colors.white),
               obscureText: true,
               decoration: InputDecoration(
@@ -84,7 +108,7 @@ class ChessVisionLogin extends StatelessWidget {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: _login,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purple[300],
                   shape: RoundedRectangleBorder(
@@ -103,7 +127,9 @@ class ChessVisionLogin extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // Implementar a navegação para a tela de cadastro
+              },
               child: const Text(
                 'Sign up',
                 style: TextStyle(

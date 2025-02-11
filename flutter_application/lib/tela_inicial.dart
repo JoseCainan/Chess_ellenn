@@ -1,22 +1,9 @@
 import 'package:flutter/material.dart';
+import 'tela_config.dart';
+import 'tela_newgame.dart'; // Atualizado para a tela correta
+import 'tela_j1XIA.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ChessVisionScreen(),
-    );
-  }
-}
-
-class ChessVisionScreen extends StatelessWidget {
+class TelaInicial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +13,12 @@ class ChessVisionScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.person, color: Colors.pink),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => TelaConfig()),
+            );
+          },
         ),
         actions: [
           IconButton(
@@ -38,7 +30,7 @@ class ChessVisionScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'lib/telas/icones/Cavalo.png',
+              'assets/telas/icones/Cavalo.png',
               height: 40,
             ),
             const SizedBox(width: 8),
@@ -64,16 +56,34 @@ class ChessVisionScreen extends StatelessWidget {
                 mainAxisSpacing: 16,
                 children: [
                   _buildOption(
+                    context,
                     'Multijogador\npartida por rating',
-                    'assets/lib/telas/icones/multijogador.png',
+                    'assets/telas/icones/multijogador.png',
+                    () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                TelaNewGame()), // Alterado para a tela correta
+                      );
+                    },
                   ),
                   _buildOption(
+                    context,
                     'Ellen IA\nconverse com Ellen\ntire dúvidas\nanalise partidas',
-                    'assets/lib/telas/icones/girlAI.png',
+                    'assets/telas/icones/girlAI.png',
+                    () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => TelaJ1XIA()),
+                      );
+                    },
                   ),
                   _buildOption(
+                    context,
                     'Jogar\nquebra-cabeça',
-                    'assets/lib/telas/icones/download.png',
+                    'assets/telas/icones/download.png',
+                    () {},
                   ),
                 ],
               ),
@@ -104,30 +114,38 @@ class ChessVisionScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildOption(String label, String imagePath) {
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
+  Widget _buildOption(
+    BuildContext context,
+    String label,
+    String imagePath,
+    void Function()? onTap,
+  ) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 14,
+          const SizedBox(height: 8),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

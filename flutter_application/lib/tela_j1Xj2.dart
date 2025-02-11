@@ -1,22 +1,7 @@
 import 'package:flutter/material.dart';
+import 'tela_inicial.dart'; // Importação para navegação
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ChessGameScreen(),
-    );
-  }
-}
-
-class ChessGameScreen extends StatelessWidget {
+class TelaJ1XJ2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +11,12 @@ class ChessGameScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => TelaInicial()),
+            );
+          },
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
