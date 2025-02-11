@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'tela_inicial.dart'; // Importação para navegação
+import 'tela_inicial.dart';
 
 class TelaJ1XJ2 extends StatelessWidget {
   @override

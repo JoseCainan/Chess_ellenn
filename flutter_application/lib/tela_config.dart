@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'tela_inicial.dart'; // Importando a tela inicial
+import 'tela_inicial.dart';
 
 class TelaConfig extends StatelessWidget {
   const TelaConfig({super.key});

@@ -46,9 +46,7 @@ class TelaNewGame extends StatelessWidget {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      TelaInicial()), // Volta para a tela inicial
+              MaterialPageRoute(builder: (context) => TelaInicial()),
             );
           },
         ),
@@ -98,9 +96,7 @@ class TelaNewGame extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            TelaJ1XJ2()), // Jogo entre dois jogadores
+                    MaterialPageRoute(builder: (context) => TelaJ1XJ2()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -139,8 +135,7 @@ class TelaNewGame extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => TelaJ1XIA()), // Jogo contra a IA
+                  MaterialPageRoute(builder: (context) => TelaJ1XIA()),
                 );
               },
             ),

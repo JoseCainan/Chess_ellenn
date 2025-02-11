@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'tela_config.dart';
-import 'tela_newgame.dart'; // Atualizado para a tela correta
+import 'tela_newgame.dart';
 import 'tela_j1XIA.dart';
 
 class TelaInicial extends StatelessWidget {
@@ -62,9 +62,7 @@ class TelaInicial extends StatelessWidget {
                     () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                TelaNewGame()), // Alterado para a tela correta
+                        MaterialPageRoute(builder: (context) => TelaNewGame()),
                       );
                     },
                   ),
