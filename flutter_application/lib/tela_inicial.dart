@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'tela_config.dart';
-<<<<<<< HEAD
 import 'tela_newgame.dart';
-=======
-import 'tela_newgame.dart'; // Atualizado para a tela correta
->>>>>>> dfdff32dcf66a40bb56e015adad14832e3b15619
 import 'tela_j1XIA.dart';
 
 class TelaInicial extends StatelessWidget {
@@ -66,13 +62,7 @@ class TelaInicial extends StatelessWidget {
                     () {
                       Navigator.pushReplacement(
                         context,
-<<<<<<< HEAD
                         MaterialPageRoute(builder: (context) => TelaNewGame()),
-=======
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                TelaNewGame()), // Alterado para a tela correta
->>>>>>> dfdff32dcf66a40bb56e015adad14832e3b15619
                       );
                     },
                   ),

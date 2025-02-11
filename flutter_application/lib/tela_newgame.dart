@@ -46,13 +46,7 @@ class TelaNewGame extends StatelessWidget {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-<<<<<<< HEAD
               MaterialPageRoute(builder: (context) => TelaInicial()),
-=======
-              MaterialPageRoute(
-                  builder: (context) =>
-                      TelaInicial()), // Volta para a tela inicial
->>>>>>> dfdff32dcf66a40bb56e015adad14832e3b15619
             );
           },
         ),
@@ -102,13 +96,7 @@ class TelaNewGame extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-<<<<<<< HEAD
                     MaterialPageRoute(builder: (context) => TelaJ1XJ2()),
-=======
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            TelaJ1XJ2()), // Jogo entre dois jogadores
->>>>>>> dfdff32dcf66a40bb56e015adad14832e3b15619
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -147,12 +135,7 @@ class TelaNewGame extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-<<<<<<< HEAD
                   MaterialPageRoute(builder: (context) => TelaJ1XIA()),
-=======
-                  MaterialPageRoute(
-                      builder: (context) => TelaJ1XIA()), // Jogo contra a IA
->>>>>>> dfdff32dcf66a40bb56e015adad14832e3b15619
                 );
               },
             ),
