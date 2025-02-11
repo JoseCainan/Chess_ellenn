@@ -1,23 +1,10 @@
 import 'package:flutter/material.dart';
+import 'tela_j1Xj2.dart';
+import 'tela_j1XIA.dart';
+import 'tela_inicial.dart';
 
-void main() {
-  runApp(const ChessVisionApp());
-}
-
-class ChessVisionApp extends StatelessWidget {
-  const ChessVisionApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: NewGameScreen(),
-    );
-  }
-}
-
-class NewGameScreen extends StatelessWidget {
-  const NewGameScreen({Key? key}) : super(key: key);
+class TelaNewGame extends StatelessWidget {
+  const TelaNewGame({Key? key}) : super(key: key);
 
   Widget _buildOptionButton({
     required IconData icon,
@@ -56,7 +43,14 @@ class NewGameScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      TelaInicial()), // Volta para a tela inicial
+            );
+          },
         ),
         title: const Text(
           'Novo jogo',
@@ -101,7 +95,14 @@ class NewGameScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            TelaJ1XJ2()), // Jogo entre dois jogadores
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   shape: RoundedRectangleBorder(
@@ -135,7 +136,13 @@ class NewGameScreen extends StatelessWidget {
               icon: Icons.desktop_windows,
               label: 'vs Computer',
               iconColor: Colors.blue,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TelaJ1XIA()), // Jogo contra a IA
+                );
+              },
             ),
           ],
         ),

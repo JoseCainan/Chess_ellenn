@@ -1,23 +1,8 @@
 import 'package:flutter/material.dart';
+import 'tela_inicial.dart'; // Importando a tela inicial
 
-void main() {
-  runApp(const ChessVisionApp());
-}
-
-class ChessVisionApp extends StatelessWidget {
-  const ChessVisionApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ConfigScreen(),
-    );
-  }
-}
-
-class ConfigScreen extends StatelessWidget {
-  const ConfigScreen({super.key});
+class TelaConfig extends StatelessWidget {
+  const TelaConfig({super.key});
 
   Widget _buildConfigButton(
     String label,
@@ -56,7 +41,12 @@ class ConfigScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => TelaInicial()),
+            );
+          },
         ),
         title: const Text(
           'Configurações',
@@ -90,7 +80,7 @@ class ConfigScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             _buildConfigButton(
-              'importar partidas',
+              'Importar partidas',
               Icons.desktop_windows,
               Colors.blue,
               () {},
